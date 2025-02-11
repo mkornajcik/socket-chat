@@ -1,0 +1,378 @@
+/* General Page Styling */
+body {
+  font-family: monospace;
+  font-size: larger;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.gold {
+  background-color: #f1c40f;
+}
+
+/* Sidebar Styling */
+.sidenav {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #34495e;
+  overflow-x: hidden;
+  padding-top: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: width 0.3s ease;
+}
+
+.sidenav h2 {
+  color: #f1c40f;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Room List Styling */
+.room-ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  background: #34495e;
+  border-radius: 10px;
+  padding: 10px;
+  overflow-y: auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  min-height: 48px;
+}
+
+.room-ul li {
+  padding: 10px;
+  margin: 5px 0;
+  background: #1abc9c;
+  color: #2c3e50;
+  border-radius: 8px;
+  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.room-ul li:hover {
+  background-color: #16a085;
+  transform: scale(1.05);
+}
+
+/* Main Content Styling */
+.main {
+  margin-left: 300px;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #f1c40f;
+  text-align: center;
+}
+
+/* Input Fields */
+input {
+  width: calc(100% - 20px);
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: #34495e;
+  color: white;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+input:focus {
+  background: #1abc9c;
+  color: #2c3e50;
+}
+
+/* Buttons */
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1abc9c;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #16a085;
+}
+
+button:disabled {
+  background-color: #7f8c8d;
+  cursor: not-allowed;
+}
+
+/* Chat Messages */
+.message-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #34495e;
+  border-radius: 10px;
+  padding: 10px;
+  flex: 1;
+  overflow-y: auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  max-width: 95vw;
+}
+
+.message-ul li {
+  padding: 5px;
+  margin: 2px 0;
+  background: #1abc9c;
+  color: #2c3e50;
+  border-radius: 8px;
+  text-align: left;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.message-ul li.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Typing Indicator */
+#typingIndicator {
+  font-style: italic;
+  color: #f1c40f;
+  margin: 0;
+  text-align: center;
+  padding-left: 10px;
+  width: 100%;
+  display: none;
+}
+
+/* Message Input Area */
+.message-input-area {
+  display: flex;
+  align-items: center;
+}
+
+.message-input-area input {
+  display: flex;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.message-input-area button {
+  width: auto;
+  margin: 10px;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Background Overlay for the Custom Prompt */
+.custom-prompt-overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Prompt Box */
+.custom-prompt-box {
+  background: #2c3e50;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+/* Show the Prompt */
+.custom-prompt-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-prompt-overlay.active .custom-prompt-box {
+  transform: translateY(0);
+}
+
+/* Input Field in Prompt Box */
+.custom-prompt-box input {
+  width: 90%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background: #34495e;
+  color: white;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.custom-prompt-box input:focus {
+  background: #1abc9c;
+  color: #2c3e50;
+}
+
+/* Buttons in Prompt Box */
+.prompt-buttons button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1abc9c;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 10px;
+}
+
+.prompt-buttons button:hover {
+  background-color: #16a085;
+}
+
+/* Custom Alert Styling */
+.custom-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e74c3c;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.custom-alert.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidenav {
+    width: 200px;
+  }
+
+  .main {
+    margin-left: 200px;
+  }
+
+  .sidenav h2 {
+    margin-top: 20px;
+  }
+
+  .room-ul {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  #typingIndicator {
+    bottom: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidenav {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .sidenav h2 {
+    margin-top: 20px;
+  }
+
+  .room-ul {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  input,
+  button {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .message-ul {
+    max-width: 90%;
+    height: 400px;
+  }
+
+  .message-input-area {
+    flex-direction: column;
+  }
+
+  .message-input-area input {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .message-input-area button {
+    width: 100%;
+  }
+
+  #typingIndicator {
+    bottom: 100px;
+  }
+}
+
+/* Toggle Button Styling */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #f1c40f;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+  padding: 0;
+}
+
+.toggle-btn:hover {
+  color: #e67e22;
+}

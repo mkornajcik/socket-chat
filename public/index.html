@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Chat</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="shortcut icon" href="/img/fav.png" type="image/x-icon">
+</head>
+<body>
+  <!-- Side nav display -->
+  <div class="sidenav">
+    <h2>Room List <button class="toggle-btn" onclick="toggleNav('roomList')">&#9654;</button></h2>
+    <ul class="room-ul" id="roomList"></ul>
+    <h2>User List <button class="toggle-btn" onclick="toggleNav('userList')">&#9654;</button></h2>
+    <ul class="room-ul" id="userList"></ul>
+  </div>
+
+  <div class="main">
+    <h1>Socket Chat</h1>
+
+    <!-- Username display -->
+    <div id="usernameDisplay" style="display: none; color: #f1c40f; text-align: center; margin-bottom: 20px;"></div>
+    
+    <!-- Room input -->
+    <div class="message-input-area">
+      <input type="text" id="room" style="text-align: left;" placeholder="Enter room name">
+      <button id="joinBtn" onclick="joinRoom()">Join</button>
+      <button id="leaveBtn" style="margin-left: 1rem;" class="gold" onclick="leaveRoom()" disabled>Leave</button>
+    </div>
+    
+    <!-- Chatbox -->
+    <ul class="message-ul" id="messages"></ul>
+    
+    <!-- Typing Indicator -->
+    <div id="typingIndicator" style="display: none;">Someone is typing...</div>
+
+    <!-- Message input -->
+    <div class="message-input-area">
+      <input type="text" id="message" style="text-align: left;" placeholder="Enter message" disabled>
+      <button id="sendBtn" onclick="sendChat()" disabled>Send</button>
+    </div>
+
+    <!-- File input -->
+    <div class="message-input-area">
+      <input type="file" id="fileInput" style="margin-bottom: 1.5rem;">
+      <button id="sendFileBtn" style="margin-bottom: 1.5rem;" onclick="sendFile()">Send File</button>
+    </div>
+    
+    <!-- Custom Username Prompt -->
+    <div class="custom-prompt-overlay" id="customPrompt">
+        <div class="custom-prompt-box">
+            <h3>Enter Your Name</h3>
+            <input type="text" id="customPromptInput" placeholder="Your name" maxlength=12>
+            <div class="prompt-buttons">
+                <button onclick="sendPrompt()">OK</button>
+            </div>
+        </div>
+    </div>
+  </div>
+    
+  <!-- Custom Alert -->
+  <div class="custom-alert" id="customAlert"></div>
+
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  <script src="/js/script.js"></script>
+</body>
+</html>
