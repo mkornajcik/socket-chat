@@ -118,7 +118,7 @@ function allowEnter(event) {
 
 function joinPrivate(targetUsername) {
   // Create private rooms with this format: private-user-targetUser
-  const privateRoom = `privatechat-${username}-${targetUsername}-${Date.now()}`;
+  const privateRoom = `private-${username}-${targetUsername}`;
   socket.emit("join-room", { username, room: privateRoom, private: true });
   activeRoom = privateRoom;
   showAlert(`Private chat with ${targetUsername}`);
