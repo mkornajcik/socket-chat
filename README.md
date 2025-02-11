@@ -20,6 +20,9 @@ A real-time chat application built with Node.js, Express, and Socket.io. Support
 - **Storage**: Multer for file uploads
 - **Utilities**: Sanitize-html, compression
 
+## Preview 🪟
+https://github.com/user-attachments/assets/1d8e1d1c-a117-4d90-9493-31e89347baf0
+
 ## Installation ⚙️
 1. Clone the repo:
    ```bash
